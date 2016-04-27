@@ -11,19 +11,21 @@ import CoreData
 
 class ApplicationPersistentStore: NSObject, PersistentStoreType {
     
+    static let persistentStorePath          = "applicationsqlite"
     static let managedObjectModelName       = "Application"
     static let managedObjectModelVersion    = "1.0"
-    static let persistentStorePath          = "application.sqlite"
     
-    lazy var sharedCoreDataManager: CoreDataManager = {
+    private static var sharedCoreDataManager: CoreDataManager = {
+        let docsDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        let persistentStoreURL = docsDirectory.URLByAppendingPathComponent( persistentStorePath )
         
-        let momPath = ("\(ApplicationPersistentStore.managedObjectModelName).momd" as NSString).stringByAppendingPathComponent( ApplicationPersistentStore.managedObjectModelVersion )
+        let momPath = ("\(managedObjectModelName).momd" as NSString).stringByAppendingPathComponent( managedObjectModelVersion )
         guard let momURLInBundle = NSBundle.mainBundle().URLForResource( momPath, withExtension: "mom" ) else {
             fatalError( "Cannot find managed object model (.mom) for URL in bundle: \(momPath)" )
         }
         
         return CoreDataManager(
-            persistentStoreURL: ApplicationPersistentStore.persistentStoreURL( fromPath:ApplicationPersistentStore.persistentStorePath ),
+            persistentStoreURL: persistentStoreURL,
             currentModelVersion: CoreDataManager.ModelVersion(
                 identifier: managedObjectModelVersion,
                 managedObjectModelURL: momURLInBundle
@@ -32,16 +34,11 @@ class ApplicationPersistentStore: NSObject, PersistentStoreType {
         )
     }()
     
-    static func persistentStoreURL(fromPath path: String) -> NSURL {
-        let docsDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-        return docsDirectory.URLByAppendingPathComponent( path )
-    }
-    
     var mainContext: NSManagedObjectContext {
-        return sharedCoreDataManager.mainContext
+        return ApplicationPersistentStore.sharedCoreDataManager.mainContext
     }
     
     func createBackgroundContext() -> NSManagedObjectContext {
-        return sharedCoreDataManager.createChildContext(.PrivateQueueConcurrencyType)
+        return ApplicationPersistentStore.sharedCoreDataManager.createChildContext(.PrivateQueueConcurrencyType)
     }
 }

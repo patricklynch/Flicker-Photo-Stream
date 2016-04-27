@@ -41,6 +41,6 @@ struct PhotosPayload {
         self.itemsPerPage = itemsPerPage
         self.totalItems = totalItems
         
-        self.photos = json["photos"].array ?? []
+        self.photos = json["photo"].array ?? []
     }
 }

@@ -18,7 +18,7 @@ extension NSURLSession {
         dataTaskWithRequest(urlRequest) {
             data = $0; response = $1; error = $2
             dispatch_semaphore_signal(semaphore)
-            }.resume()
+        }.resume()
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         

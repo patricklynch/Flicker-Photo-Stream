@@ -11,8 +11,10 @@ import Foundation
 protocol NetworkConfig {
     var secret: String { get }
     var key: String { get }
-    var url: NSURL { get }
     var format: String { get }
+    var baseURL: String { get }
+    var imageURLFormat: String { get }
+    func url(method: String) -> NSURL
 }
 
 struct DefaultNetworkConfig: NetworkConfig {
@@ -20,5 +22,15 @@ struct DefaultNetworkConfig: NetworkConfig {
     let key = "a6dc5405ec56f78c3392d34df6ec1ec7"
     let format = "json"
     let method = "flickr.photos.getRecent"
-    let url = NSURL(string: "https://api.flickr.com/services/rest?method=flickr.photos.getRecent&api_key=a6dc5405ec56f78c3392d34df6ec1ec7&format=json&nojsoncallback=1")!
+    let baseURL = "https://api.flickr.com/services/rest"
+    let imageURLFormat = "https://farm%i.staticflickr.com/%@/%@_%@_z.%@"
+    
+    func url(method: String) -> NSURL {
+        let urlString = baseURL
+            + "?method=\(method)"
+            + "&api_key=a6dc5405ec56f78c3392d34df6ec1ec7"
+            + "&format=json"
+            + "&nojsoncallback=1"
+        return NSURL(string: urlString)!
+    }
 }

@@ -51,5 +51,41 @@ extension NSManagedObjectContext {
         }
         return nil
     }
+    
+    /// Performs a save to the receiver and subsequently the reciever's `parentContext`,
+    /// if defined. Also catches any exceptions, throws an assertion failure and
+    /// logs detailed error messages to the console.
+    func ext_saveAndBubbleToParentContext() {
+        ext_save()
+        parentContext?.ext_performBlockAndWait() { context in
+            context.ext_save()
+        }
+    }
+    
+    /// Performs a save to the receiver and catches any exceptions, throws an assertion
+    /// failure and logs detailed error messages to the console.
+    func ext_save() {
+        do {
+            try self.save()
+        } catch {
+            var message = "\n\n *** FAILED TO SAVE! ***\n"
+            let userInfo = (error as NSError).userInfo
+            var managedObject: NSManagedObject?
+            if let detailedErrors = userInfo[ "NSDetailedErrors" ] as? [NSError] {
+                for detailedError in detailedErrors {
+                    if let validationField = detailedError.userInfo[ "NSValidationErrorKey" ] as? String,
+                        let object = detailedError.userInfo[ "NSValidationErrorObject" ] as? NSManagedObject {
+                        managedObject = object
+                        message += "\n - Missing value for non-optional field \"\(validationField)\" on object \(managedObject?.dynamicType)."
+                    }
+                }
+            }
+            else if let validationField = userInfo[ "NSValidationErrorKey" ] as? String,
+                let object = userInfo[ "NSValidationErrorObject" ] as? NSManagedObject {
+                managedObject = object
+                message += "\n - Missing value for non-optional field \"\(validationField)\" on object \(managedObject?.dynamicType)."
+            }
+            assertionFailure()
+        }
+    }
 }
-

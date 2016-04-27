@@ -8,47 +8,59 @@
 
 import Foundation
 import CoreData
+
 class LoadPhotoStreamOperation: BackgroundOperation {
     
+    // These are vars instead of lets so that they can be easily mocked in unit tests
     var networkConfig: NetworkConfig = DefaultNetworkConfig()
     var persistentStore: PersistentStoreType = ApplicationPersistentStore()
     
+    let method = "flickr.photos.getRecent"
+    
     override func start() {
         beganExecuting()
-        let url = networkConfig.url
+        
+        let url = networkConfig.url(method)
         let urlRequest = NSMutableURLRequest(URL: url)
         let urlSession = NSURLSession.sharedSession()
-        let (data, _, error) = urlSession.synchronousDataTaskWithURL(urlRequest)
+        let (data, _, networkError) = urlSession.synchronousDataTaskWithURL(urlRequest)
         
-        if let error = error {
+        if let error = networkError {
             self.error = error
             
         } else if let data = data,
             let response = RecentPhotosResponse(json: JSON(data: data)) {
             
-            // Parse photos into persistent store using background context
-            let parsedObjectIDs: [NSManagedObjectID] = persistentStore.createBackgroundContext().ext_performBlockAndWait() { context in
-                var parsedPhotos = [Photo]()
-                for photoJSON in response.photosPayload.photos {
-                    guard let entity = NSEntityDescription.entityForName("Photo", inManagedObjectContext: context),
+            // Parse photos into persistent store using background context/thread
+            let backgroundParsedPhotos: [Photo] = persistentStore.createBackgroundContext().ext_performBlockAndWait() { context in
+                
+                // Map each JSON source to a `Photo` model
+                let newPhotos: [Photo] = response.photosPayload.photos.flatMap { photoJSON in
+                    guard let entity = NSEntityDescription.entityForName(Photo.entityName, inManagedObjectContext: context),
                         let photo = NSManagedObject(entity: entity, insertIntoManagedObjectContext: context) as? Photo else {
-                        continue
+                        return nil
                     }
                     if photo.populate(fromJSON: photoJSON) {
-                        parsedPhotos.append(photo)
+                        return photo
+                    } else {
+                        return nil
                     }
                 }
-                return parsedPhotos.map { $0.objectID }
+                
+                // We have to save first before objectIDs are generated for newly-created NSManagedObjects
+                context.ext_saveAndBubbleToParentContext()
+                return newPhotos
             }
             
-            // Read those results back from the main context using the object IDs
-            results = persistentStore.mainContext.ext_performBlockAndWait() { context in
-                return parsedObjectIDs.flatMap { context.objectWithID($0) as? Photo }
+            // Read those results back from the main context/thread using the object IDs
+            let parsedObjectIDs: [NSManagedObjectID] = backgroundParsedPhotos.map { $0.objectID }
+            persistentStore.mainContext.ext_performBlockAndWait() { context in
+                let photos = parsedObjectIDs.flatMap { context.objectWithID($0) as? Photo }
+                self.results = photos
             }
-            
             
         } else {
-            print("Failed to parse response")
+            error = NSError(domain: "", code: 1, userInfo: ["reason" : "Failed to parse response."])
         }
     
         finishedExecuting()

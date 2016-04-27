@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
-    <entity name="Photo" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="Photo" representedClassName=".Photo" syncable="YES">
         <attribute name="farm" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="isFamily" attributeType="Boolean" syncable="YES"/>
         <attribute name="isFriend" attributeType="Boolean" syncable="YES"/>
         <attribute name="isPublic" attributeType="Boolean" syncable="YES"/>
@@ -11,7 +11,12 @@
         <attribute name="server" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="id" optional="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Photo" positionX="-45" positionY="0" width="128" height="30"/>
+        <element name="Photo" positionX="-45" positionY="0" width="128" height="180"/>
+        <element name="User" positionX="-45" positionY="72" width="128" height="75"/>
     </elements>
 </model>
