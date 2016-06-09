@@ -10,8 +10,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var persistentStore: PersistentStoreType = ApplicationPersistentStore()
 
     var window: UIWindow?
 
@@ -21,11 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(application: UIApplication) {
-        savePersistentStore()
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        savePersistentStore()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -35,13 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        savePersistentStore()
-    }
-
-    private func savePersistentStore() {
-        persistentStore.mainContext.ext_performBlockAndWait() { context in
-            context.ext_save()
-        }
     }
 }
 

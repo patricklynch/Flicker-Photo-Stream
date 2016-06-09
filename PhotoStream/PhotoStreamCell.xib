@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,24 +8,57 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PhotoStreamCell" customModule="PhotoStream" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="325" height="218"/>
+            <rect key="frame" x="0.0" y="0.0" width="325" height="271"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="325" height="218"/>
+                <rect key="frame" x="0.0" y="0.0" width="325" height="271"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jAN-tg-J91">
-                        <rect key="frame" x="0.0" y="0.0" width="325" height="218"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbV-40-AXD">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="221"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                    </view>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uUI-gZ-oXf">
+                        <rect key="frame" x="152" y="100" width="20" height="20"/>
+                    </activityIndicatorView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jAN-tg-J91">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="221"/>
+                        <color key="backgroundColor" red="1" green="0.18380582296125869" blue="0.14177147471771312" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="221" id="3mz-eC-Rwm"/>
+                        </constraints>
                     </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5D0-dh-CRX">
+                        <rect key="frame" x="0.0" y="221" width="325" height="50"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-            <size key="customSize" width="325" height="218"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jAN-tg-J91" secondAttribute="trailing" id="3mc-mW-sGd"/>
+                <constraint firstItem="uUI-gZ-oXf" firstAttribute="centerX" secondItem="jAN-tg-J91" secondAttribute="centerX" id="6mF-fc-5PJ"/>
+                <constraint firstAttribute="trailing" secondItem="5D0-dh-CRX" secondAttribute="trailing" id="8vl-md-o3B"/>
+                <constraint firstItem="IbV-40-AXD" firstAttribute="bottom" secondItem="jAN-tg-J91" secondAttribute="bottom" id="E8z-VA-CTp"/>
+                <constraint firstItem="5D0-dh-CRX" firstAttribute="top" secondItem="jAN-tg-J91" secondAttribute="bottom" id="FkT-iU-mDu"/>
+                <constraint firstItem="IbV-40-AXD" firstAttribute="top" secondItem="jAN-tg-J91" secondAttribute="top" id="KgO-ii-NpI"/>
+                <constraint firstItem="IbV-40-AXD" firstAttribute="trailing" secondItem="jAN-tg-J91" secondAttribute="trailing" id="Ubi-nG-rrl"/>
+                <constraint firstItem="jAN-tg-J91" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Wax-n5-jPp"/>
+                <constraint firstItem="uUI-gZ-oXf" firstAttribute="centerY" secondItem="jAN-tg-J91" secondAttribute="centerY" id="bff-4x-PTr"/>
+                <constraint firstItem="IbV-40-AXD" firstAttribute="leading" secondItem="jAN-tg-J91" secondAttribute="leading" id="grZ-Xu-OAm"/>
+                <constraint firstAttribute="bottom" secondItem="5D0-dh-CRX" secondAttribute="bottom" id="hds-pg-fWd"/>
+                <constraint firstItem="jAN-tg-J91" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oA6-te-V1z"/>
+                <constraint firstItem="5D0-dh-CRX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yYS-be-bNi"/>
+            </constraints>
+            <size key="customSize" width="325" height="271"/>
             <connections>
                 <outlet property="imageView" destination="jAN-tg-J91" id="2eB-M2-dZl"/>
+                <outlet property="textView" destination="5D0-dh-CRX" id="xRD-y4-Wwl"/>
             </connections>
-            <point key="canvasLocation" x="248.5" y="450"/>
+            <point key="canvasLocation" x="248.5" y="423.5"/>
         </collectionViewCell>
     </objects>
 </document>

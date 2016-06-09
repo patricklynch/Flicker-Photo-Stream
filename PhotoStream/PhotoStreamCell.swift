@@ -8,55 +8,50 @@
 
 import UIKit
 
-protocol SelfSizingCell: class {
-    func cellSize(withinBounds bounds: CGRect) -> CGSize
-}
-
 class PhotoStreamCell: UICollectionViewCell, SelfSizingCell {
     
-    /// Represents the necessary configuration data for this view
-    struct ViewData {
-        let imageURL: NSURL?
-        let caption: String
+    var caption: String? {
+        didSet {
+            textView.text = caption
+        }
     }
     
-    var viewData: ViewData? {
+    var imageURL: NSURL? {
         didSet {
-            if let viewData = viewData where viewData.imageURL != oldValue?.imageURL {
-                imageView.alpha = 0.0
-                if let imageURL = viewData.imageURL {
-                    imageView.sd_setImageWithURL(imageURL) { image, error, cacheType, url in
-                        guard cacheType == .None else {
-                            // If we were cached from disk/memory, the image is avialable
-                            // immediately and we don't need to animate
-                            self.imageView.alpha = 1.0
-                            return
-                        }
-                        UIView.animateWithDuration(0.3) {
-                            cacheType
-                            self.imageView.alpha = 1.0
-                        }
-                    }
+            guard let imageURL = imageURL where imageURL != oldValue else {
+                return
+            }
+            
+            imageView.alpha = 0.0
+            imageView.sd_setImageWithURL(imageURL) { image, error, cacheType, url in
+                guard cacheType == .None else {
+                    // If we were cached from disk/memory, the image is avialable
+                    // immediately and we don't need to animate
+                    self.imageView.alpha = 1.0
+                    return
+                }
+                UIView.animateWithDuration(0.3) {
+                    cacheType
+                    self.imageView.alpha = 1.0
                 }
             }
         }
     }
     
     @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var textView: UITextView!
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        // They key to smooth scrolling performance in table- and collectionViews is to NOT use autolayout
-        // It's a bit more complicated to do frames and bounds the old school way, but this will
-        // be smooth enough to run on a old, slow iPod touch
-        
-        imageView.frame = bounds
+    private func calculateTextSize(withinBounds bounds: CGRect) -> CGSize {
+        var sizeNeeded = textView.sizeThatFits(CGSize(width: bounds.width, height: CGFloat.max))
+        sizeNeeded.width = bounds.width
+        return sizeNeeded
     }
     
     // MARK: - SelfSizingCell
     
     func cellSize(withinBounds bounds: CGRect) -> CGSize {
-        return CGSize(width: bounds.width, height: bounds.width) //< Square
+        let textSize = calculateTextSize(withinBounds: bounds)
+        let mediaSize = CGSize(width: bounds.width, height: imageView.frame.height) //< Square
+        return CGSize(width: bounds.width, height: textSize.height + mediaSize.height)
     }
 }

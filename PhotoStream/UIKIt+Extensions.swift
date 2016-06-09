@@ -38,7 +38,7 @@ extension UIView {
     
     /// Loads a nib named `nibNameOrNib`, iterates through each of the views within and returns
     /// the first one whose type matches generic type `T`.
-    static func v_fromNib<T: UIView>(nibNameOrNil: String? = nil) -> T {
+    static func fromNib<T: UIView>(nibNameOrNil: String? = nil) -> T {
         let name = nibNameOrNil ?? StringFromClass(self)
         let nibViews = NSBundle.mainBundle().loadNibNamed(name, owner: nil, options: nil)
         for view in nibViews {

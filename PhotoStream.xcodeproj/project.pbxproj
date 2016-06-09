@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A088B7A1D092D8500BF5FE6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A088B791D092D8500BF5FE6 /* Protocols.swift */; };
 		5AFF961F1CD118C000DD485B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF961E1CD118C000DD485B /* AppDelegate.swift */; };
 		5AFF96211CD118C000DD485B /* PhotoStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96201CD118C000DD485B /* PhotoStreamViewController.swift */; };
 		5AFF96241CD118C000DD485B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF96221CD118C000DD485B /* Main.storyboard */; };
@@ -18,19 +19,12 @@
 		5AFF96441CD11CB200DD485B /* PhotoStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96421CD11CB200DD485B /* PhotoStreamCell.swift */; };
 		5AFF96451CD11CB200DD485B /* PhotoStreamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF96431CD11CB200DD485B /* PhotoStreamCell.xib */; };
 		5AFF96471CD11E1300DD485B /* PhotoStreamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96461CD11E1300DD485B /* PhotoStreamDataSource.swift */; };
-		5AFF96491CD11E7400DD485B /* BackgroundOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96481CD11E7400DD485B /* BackgroundOperation.swift */; };
-		5AFF964B1CD11EA700DD485B /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF964A1CD11EA700DD485B /* Queueable.swift */; };
 		5AFF96CC1CD11FFE00DD485B /* NSURLSession+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96CB1CD11FFE00DD485B /* NSURLSession+Sync.swift */; };
 		5AFF96CE1CD1246E00DD485B /* LoadPhotoStreamOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96CD1CD1246E00DD485B /* LoadPhotoStreamOperation.swift */; };
 		5AFF97161CD1254A00DD485B /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96DC1CD1254A00DD485B /* FBKVOController.m */; };
 		5AFF972B1CD1254A00DD485B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96FE1CD1254A00DD485B /* SwiftyJSON.swift */; };
-		5AFF97581CD1313400DD485B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF97571CD1313400DD485B /* CoreDataManager.swift */; };
-		5AFF975A1CD1321600DD485B /* ApplicationPersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF97591CD1321600DD485B /* ApplicationPersistentStore.swift */; };
-		5AFF975C1CD1322E00DD485B /* PersistentStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF975B1CD1322E00DD485B /* PersistentStoreType.swift */; };
-		5AFF975F1CD1328D00DD485B /* Application.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF975D1CD1328D00DD485B /* Application.xcdatamodeld */; };
 		5AFF97621CD133B100DD485B /* NetworkPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF97611CD133B100DD485B /* NetworkPayloads.swift */; };
 		5AFF97641CD133C700DD485B /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF97631CD133C700DD485B /* NetworkConfig.swift */; };
-		5AFF97661CD1347700DD485B /* NSManagedObjectContext+Perform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF97651CD1347700DD485B /* NSManagedObjectContext+Perform.swift */; };
 		A7D952541CD151EE00AD1D1D /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D952341CD151EE00AD1D1D /* MKAnnotationView+WebCache.m */; };
 		A7D952551CD151EE00AD1D1D /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D952361CD151EE00AD1D1D /* NSData+ImageContentType.m */; };
 		A7D952561CD151EE00AD1D1D /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D952381CD151EE00AD1D1D /* SDImageCache.m */; };
@@ -47,8 +41,6 @@
 		A7D952611CD151EE00AD1D1D /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D9524F1CD151EE00AD1D1D /* UIImageView+HighlightedWebCache.m */; };
 		A7D952621CD151EE00AD1D1D /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D952511CD151EE00AD1D1D /* UIImageView+WebCache.m */; };
 		A7D952631CD151EE00AD1D1D /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D952531CD151EE00AD1D1D /* UIView+WebCacheOperation.m */; };
-		A7D952671CD1621800AD1D1D /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D952651CD1621800AD1D1D /* ErrorCell.swift */; };
-		A7D952681CD1621800AD1D1D /* ErrorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7D952661CD1621800AD1D1D /* ErrorCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A088B791D092D8500BF5FE6 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		5AFF961B1CD118C000DD485B /* PhotoStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFF961E1CD118C000DD485B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AFF96201CD118C000DD485B /* PhotoStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStreamViewController.swift; sourceTree = "<group>"; };
@@ -77,22 +70,14 @@
 		5AFF96421CD11CB200DD485B /* PhotoStreamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStreamCell.swift; sourceTree = "<group>"; };
 		5AFF96431CD11CB200DD485B /* PhotoStreamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoStreamCell.xib; sourceTree = "<group>"; };
 		5AFF96461CD11E1300DD485B /* PhotoStreamDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStreamDataSource.swift; sourceTree = "<group>"; };
-		5AFF96481CD11E7400DD485B /* BackgroundOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundOperation.swift; sourceTree = "<group>"; };
-		5AFF964A1CD11EA700DD485B /* Queueable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queueable.swift; sourceTree = "<group>"; };
 		5AFF96CB1CD11FFE00DD485B /* NSURLSession+Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLSession+Sync.swift"; sourceTree = "<group>"; };
 		5AFF96CD1CD1246E00DD485B /* LoadPhotoStreamOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadPhotoStreamOperation.swift; sourceTree = "<group>"; };
 		5AFF96DB1CD1254A00DD485B /* FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBKVOController.h; sourceTree = "<group>"; };
 		5AFF96DC1CD1254A00DD485B /* FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBKVOController.m; sourceTree = "<group>"; };
 		5AFF96FD1CD1254A00DD485B /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
 		5AFF96FE1CD1254A00DD485B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		5AFF97571CD1313400DD485B /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		5AFF97591CD1321600DD485B /* ApplicationPersistentStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationPersistentStore.swift; sourceTree = "<group>"; };
-		5AFF975B1CD1322E00DD485B /* PersistentStoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStoreType.swift; sourceTree = "<group>"; };
-		5AFF975E1CD1328D00DD485B /* Application.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Application.xcdatamodel; sourceTree = "<group>"; };
-		5AFF97601CD1329700DD485B /* 1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.0.xcdatamodel; sourceTree = "<group>"; };
 		5AFF97611CD133B100DD485B /* NetworkPayloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPayloads.swift; sourceTree = "<group>"; };
 		5AFF97631CD133C700DD485B /* NetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
-		5AFF97651CD1347700DD485B /* NSManagedObjectContext+Perform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Perform.swift"; sourceTree = "<group>"; };
 		A7D952331CD151EE00AD1D1D /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		A7D952341CD151EE00AD1D1D /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		A7D952351CD151EE00AD1D1D /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -127,8 +112,6 @@
 		A7D952521CD151EE00AD1D1D /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		A7D952531CD151EE00AD1D1D /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		A7D952641CD1524D00AD1D1D /* PhotoStream-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoStream-Bridging-Header.h"; sourceTree = "<group>"; };
-		A7D952651CD1621800AD1D1D /* ErrorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
-		A7D952661CD1621800AD1D1D /* ErrorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,29 +155,21 @@
 			isa = PBXGroup;
 			children = (
 				5AFF961E1CD118C000DD485B /* AppDelegate.swift */,
-				5AFF975D1CD1328D00DD485B /* Application.xcdatamodeld */,
-				5AFF97591CD1321600DD485B /* ApplicationPersistentStore.swift */,
 				5AFF96251CD118C000DD485B /* Assets.xcassets */,
-				5AFF96481CD11E7400DD485B /* BackgroundOperation.swift */,
-				5AFF97571CD1313400DD485B /* CoreDataManager.swift */,
-				A7D952651CD1621800AD1D1D /* ErrorCell.swift */,
-				A7D952661CD1621800AD1D1D /* ErrorCell.xib */,
 				5AFF962A1CD118C000DD485B /* Info.plist */,
 				5AFF96271CD118C000DD485B /* LaunchScreen.storyboard */,
 				5AFF96CD1CD1246E00DD485B /* LoadPhotoStreamOperation.swift */,
 				5AFF96221CD118C000DD485B /* Main.storyboard */,
 				5AFF97631CD133C700DD485B /* NetworkConfig.swift */,
 				5AFF97611CD133B100DD485B /* NetworkPayloads.swift */,
-				5AFF97651CD1347700DD485B /* NSManagedObjectContext+Perform.swift */,
 				5AFF96CB1CD11FFE00DD485B /* NSURLSession+Sync.swift */,
-				5AFF975B1CD1322E00DD485B /* PersistentStoreType.swift */,
 				5AFF96401CD11BB000DD485B /* Photo.swift */,
 				A7D952641CD1524D00AD1D1D /* PhotoStream-Bridging-Header.h */,
 				5AFF96421CD11CB200DD485B /* PhotoStreamCell.swift */,
 				5AFF96431CD11CB200DD485B /* PhotoStreamCell.xib */,
 				5AFF96461CD11E1300DD485B /* PhotoStreamDataSource.swift */,
 				5AFF96201CD118C000DD485B /* PhotoStreamViewController.swift */,
-				5AFF964A1CD11EA700DD485B /* Queueable.swift */,
+				5A088B791D092D8500BF5FE6 /* Protocols.swift */,
 				5AFF963E1CD119CF00DD485B /* UIKIt+Extensions.swift */,
 			);
 			path = PhotoStream;
@@ -375,7 +350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AFF96291CD118C000DD485B /* LaunchScreen.storyboard in Resources */,
-				A7D952681CD1621800AD1D1D /* ErrorCell.xib in Resources */,
 				5AFF96261CD118C000DD485B /* Assets.xcassets in Resources */,
 				5AFF96451CD11CB200DD485B /* PhotoStreamCell.xib in Resources */,
 				5AFF96241CD118C000DD485B /* Main.storyboard in Resources */,
@@ -404,31 +378,24 @@
 				A7D9525A1CD151EE00AD1D1D /* SDWebImageDownloaderOperation.m in Sources */,
 				5AFF961F1CD118C000DD485B /* AppDelegate.swift in Sources */,
 				A7D952611CD151EE00AD1D1D /* UIImageView+HighlightedWebCache.m in Sources */,
-				5AFF964B1CD11EA700DD485B /* Queueable.swift in Sources */,
 				A7D952581CD151EE00AD1D1D /* SDWebImageDecoder.m in Sources */,
 				A7D952551CD151EE00AD1D1D /* NSData+ImageContentType.m in Sources */,
-				5AFF975F1CD1328D00DD485B /* Application.xcdatamodeld in Sources */,
 				5AFF97621CD133B100DD485B /* NetworkPayloads.swift in Sources */,
 				A7D952561CD151EE00AD1D1D /* SDImageCache.m in Sources */,
-				5AFF975C1CD1322E00DD485B /* PersistentStoreType.swift in Sources */,
-				5AFF97661CD1347700DD485B /* NSManagedObjectContext+Perform.swift in Sources */,
 				A7D9525B1CD151EE00AD1D1D /* SDWebImageManager.m in Sources */,
 				A7D952631CD151EE00AD1D1D /* UIView+WebCacheOperation.m in Sources */,
 				5AFF96411CD11BB000DD485B /* Photo.swift in Sources */,
 				5AFF97641CD133C700DD485B /* NetworkConfig.swift in Sources */,
-				5AFF96491CD11E7400DD485B /* BackgroundOperation.swift in Sources */,
 				A7D952591CD151EE00AD1D1D /* SDWebImageDownloader.m in Sources */,
 				A7D9525E1CD151EE00AD1D1D /* UIImage+GIF.m in Sources */,
 				5AFF96CE1CD1246E00DD485B /* LoadPhotoStreamOperation.swift in Sources */,
-				5AFF97581CD1313400DD485B /* CoreDataManager.swift in Sources */,
 				A7D952541CD151EE00AD1D1D /* MKAnnotationView+WebCache.m in Sources */,
-				5AFF975A1CD1321600DD485B /* ApplicationPersistentStore.swift in Sources */,
 				5AFF96441CD11CB200DD485B /* PhotoStreamCell.swift in Sources */,
 				A7D9525F1CD151EE00AD1D1D /* UIImage+MultiFormat.m in Sources */,
 				5AFF97161CD1254A00DD485B /* FBKVOController.m in Sources */,
 				A7D952571CD151EE00AD1D1D /* SDWebImageCompat.m in Sources */,
+				5A088B7A1D092D8500BF5FE6 /* Protocols.swift in Sources */,
 				5AFF972B1CD1254A00DD485B /* SwiftyJSON.swift in Sources */,
-				A7D952671CD1621800AD1D1D /* ErrorCell.swift in Sources */,
 				5AFF96CC1CD11FFE00DD485B /* NSURLSession+Sync.swift in Sources */,
 				A7D9525D1CD151EE00AD1D1D /* UIButton+WebCache.m in Sources */,
 				5AFF96471CD11E1300DD485B /* PhotoStreamDataSource.swift in Sources */,
@@ -637,20 +604,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5AFF975D1CD1328D00DD485B /* Application.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5AFF97601CD1329700DD485B /* 1.0.xcdatamodel */,
-				5AFF975E1CD1328D00DD485B /* Application.xcdatamodel */,
-			);
-			currentVersion = 5AFF97601CD1329700DD485B /* 1.0.xcdatamodel */;
-			path = Application.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5AFF96131CD118C000DD485B /* Project object */;
 }

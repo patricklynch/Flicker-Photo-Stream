@@ -7,30 +7,19 @@
 //
 
 import Foundation
-import CoreData
 
-protocol JSONParsable {
-    func populate(fromJSON json: JSON) -> Bool
-}
-
-class Photo: NSManagedObject {
-    static var entityName = "Photo"
+struct Photo {    
+    let farm: Int
+    let id: String
+    let isFamily: Bool
+    let isFriend: Bool
+    let isPublic: Bool
+    let owner: String
+    let secret: String
+    let server: String
+    let title: String
     
-    @NSManaged var farm: Int
-    @NSManaged var id: String
-    @NSManaged var isFamily: Bool
-    @NSManaged var isFriend: Bool
-    @NSManaged var isPublic: Bool
-    @NSManaged var owner: String
-    @NSManaged var secret: String
-    @NSManaged var server: String
-    @NSManaged var title: String
-    @NSManaged var imageURL: String
-}
-
-extension Photo: JSONParsable {
-    func populate(fromJSON json: JSON) -> Bool {
-        
+    init?(json: JSON) {
         guard let id = json["id"].string,
             let owner = json["owner"].string,
             let secret = json["secret"].string,
@@ -40,7 +29,7 @@ extension Photo: JSONParsable {
             let isPublic = json["ispublic"].int,
             let isFriend = json["isfriend"].int,
             let isFamily = json["isfamily"].int else {
-            return false
+                return nil
         }
         
         self.id = id
@@ -52,11 +41,8 @@ extension Photo: JSONParsable {
         self.isPublic = Bool(isPublic)
         self.isFriend = Bool(isFriend)
         self.isFamily = Bool(isFamily)
-        return true
     }
-}
-
-extension Photo {
+    
     func imageURL(networkConfig: NetworkConfig, fileExtension: String = "jpg") -> NSURL? {
         let format = networkConfig.imageURLFormat
         let formatted = NSString(format: format, farm, server, id, secret, fileExtension)

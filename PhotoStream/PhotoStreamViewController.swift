@@ -10,9 +10,13 @@ import UIKit
 
 class PhotoStreamViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet private weak var collectionView: UICollectionView!
+    var dataSource: ExtendedCollectionViewDataSource = PhotoStreamDataSource() {
+        didSet {
+            onDataSourceUpdated()
+        }
+    }
     
-    let dataSource = PhotoStreamDataSource()
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -34,16 +38,17 @@ class PhotoStreamViewController: UIViewController, UICollectionViewDelegateFlowL
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        onDataSourceUpdated()
+    }
+    
+    private func onDataSourceUpdated() {
         dataSource.registerCells(collectionView)
         collectionView.dataSource = dataSource
         refresh()
     }
     
     @objc private func refresh(sender: AnyObject? = nil) {
-        if sender == nil {
-            self.refreshControl.beginRefreshing()
-        }
+        self.refreshControl.beginRefreshing()
         dataSource.reload() { [weak self] in
             self?.refreshControl.endRefreshing()
             self?.collectionView.reloadData()
