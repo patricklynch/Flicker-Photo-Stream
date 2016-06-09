@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct RecentPhotosResponse {
     let photosPayload: PhotosPayload

@@ -1,0 +1,44 @@
+PODS:
+  - libwebp (0.5.0):
+    - libwebp/core (= 0.5.0)
+    - libwebp/dec (= 0.5.0)
+    - libwebp/demux (= 0.5.0)
+    - libwebp/dsp (= 0.5.0)
+    - libwebp/enc (= 0.5.0)
+    - libwebp/mux (= 0.5.0)
+    - libwebp/utils (= 0.5.0)
+    - libwebp/webp (= 0.5.0)
+  - libwebp/core (0.5.0):
+    - libwebp/webp
+  - libwebp/dec (0.5.0):
+    - libwebp/core
+  - libwebp/demux (0.5.0):
+    - libwebp/core
+  - libwebp/dsp (0.5.0):
+    - libwebp/core
+  - libwebp/enc (0.5.0):
+    - libwebp/core
+  - libwebp/mux (0.5.0):
+    - libwebp/core
+  - libwebp/utils (0.5.0):
+    - libwebp/core
+  - libwebp/webp (0.5.0)
+  - SDWebImage/Core (3.8.1)
+  - SDWebImage/WebP (3.8.1):
+    - libwebp
+    - SDWebImage/Core
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - SDWebImage/Core (~> 3.7)
+  - SDWebImage/WebP (~> 3.7)
+  - SwiftyJSON (~> 2.3.2)
+
+SPEC CHECKSUMS:
+  libwebp: 68ba2001ba6806ee52837ebd77a551a0b6567e4e
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+PODFILE CHECKSUM: 7c77694cb9ae289516c1138e005e24e2c34e445d
+
+COCOAPODS: 1.0.1

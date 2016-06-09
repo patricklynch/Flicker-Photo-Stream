@@ -6,7 +6,7 @@
 //  Copyright © 2016 lynchdev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ExtendedCollectionViewDataSource: UICollectionViewDataSource {
     func reload(completion:()->())
