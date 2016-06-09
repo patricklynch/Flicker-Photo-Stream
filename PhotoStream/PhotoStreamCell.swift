@@ -51,7 +51,7 @@ class PhotoStreamCell: UICollectionViewCell, SelfSizingCell {
     
     func cellSize(withinBounds bounds: CGRect) -> CGSize {
         let textSize = calculateTextSize(withinBounds: bounds)
-        let mediaSize = CGSize(width: bounds.width, height: imageView.frame.height) //< Square
+        let mediaSize = CGSize(width: bounds.width, height: imageView.frame.height) //< As set in IB
         return CGSize(width: bounds.width, height: textSize.height + mediaSize.height)
     }
 }

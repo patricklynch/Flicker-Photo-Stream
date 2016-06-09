@@ -20,14 +20,14 @@ class PhotoStreamDataSource: NSObject, ExtendedCollectionViewDataSource {
     
     private func decorateCell(cell: PhotoStreamCell, atIndexPath indexPath: NSIndexPath) {
         let photo = photos[indexPath.row]
-        cell.imageURL = photo.imageURL(networkConfig) //< cell prevents loading too often
+        cell.imageURL = photo.imageURL(networkConfig)
         cell.caption = photo.title
     }
     
     // MARK: ExtendedCollectionViewDataSource
     
     func reload(completion:()->()) {
-        let loadOperation = LoadPhotoStreamOperation()
+        let loadOperation = GetRecentPhotos()
         loadOperation.networkConfig = networkConfig
         loadOperation.completionBlock = { [weak self] in
             dispatch_async(dispatch_get_main_queue()) {

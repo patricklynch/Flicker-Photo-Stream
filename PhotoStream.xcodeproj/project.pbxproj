@@ -20,8 +20,7 @@
 		5AFF96451CD11CB200DD485B /* PhotoStreamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF96431CD11CB200DD485B /* PhotoStreamCell.xib */; };
 		5AFF96471CD11E1300DD485B /* PhotoStreamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96461CD11E1300DD485B /* PhotoStreamDataSource.swift */; };
 		5AFF96CC1CD11FFE00DD485B /* NSURLSession+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96CB1CD11FFE00DD485B /* NSURLSession+Sync.swift */; };
-		5AFF96CE1CD1246E00DD485B /* LoadPhotoStreamOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96CD1CD1246E00DD485B /* LoadPhotoStreamOperation.swift */; };
-		5AFF97161CD1254A00DD485B /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96DC1CD1254A00DD485B /* FBKVOController.m */; };
+		5AFF96CE1CD1246E00DD485B /* GetRecentPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96CD1CD1246E00DD485B /* GetRecentPhotos.swift */; };
 		5AFF972B1CD1254A00DD485B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF96FE1CD1254A00DD485B /* SwiftyJSON.swift */; };
 		5AFF97621CD133B100DD485B /* NetworkPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF97611CD133B100DD485B /* NetworkPayloads.swift */; };
 		5AFF97641CD133C700DD485B /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF97631CD133C700DD485B /* NetworkConfig.swift */; };
@@ -71,9 +70,7 @@
 		5AFF96431CD11CB200DD485B /* PhotoStreamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoStreamCell.xib; sourceTree = "<group>"; };
 		5AFF96461CD11E1300DD485B /* PhotoStreamDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStreamDataSource.swift; sourceTree = "<group>"; };
 		5AFF96CB1CD11FFE00DD485B /* NSURLSession+Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLSession+Sync.swift"; sourceTree = "<group>"; };
-		5AFF96CD1CD1246E00DD485B /* LoadPhotoStreamOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadPhotoStreamOperation.swift; sourceTree = "<group>"; };
-		5AFF96DB1CD1254A00DD485B /* FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBKVOController.h; sourceTree = "<group>"; };
-		5AFF96DC1CD1254A00DD485B /* FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBKVOController.m; sourceTree = "<group>"; };
+		5AFF96CD1CD1246E00DD485B /* GetRecentPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRecentPhotos.swift; sourceTree = "<group>"; };
 		5AFF96FD1CD1254A00DD485B /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
 		5AFF96FE1CD1254A00DD485B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5AFF97611CD133B100DD485B /* NetworkPayloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPayloads.swift; sourceTree = "<group>"; };
@@ -158,7 +155,7 @@
 				5AFF96251CD118C000DD485B /* Assets.xcassets */,
 				5AFF962A1CD118C000DD485B /* Info.plist */,
 				5AFF96271CD118C000DD485B /* LaunchScreen.storyboard */,
-				5AFF96CD1CD1246E00DD485B /* LoadPhotoStreamOperation.swift */,
+				5AFF96CD1CD1246E00DD485B /* GetRecentPhotos.swift */,
 				5AFF96221CD118C000DD485B /* Main.storyboard */,
 				5AFF97631CD133C700DD485B /* NetworkConfig.swift */,
 				5AFF97611CD133B100DD485B /* NetworkPayloads.swift */,
@@ -188,27 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				A7D952321CD151EE00AD1D1D /* SDWebImage */,
-				5AFF96D91CD1254A00DD485B /* KVOController */,
 				5AFF96DF1CD1254A00DD485B /* SwiftyJSON */,
 			);
 			path = ThirdParty;
-			sourceTree = "<group>";
-		};
-		5AFF96D91CD1254A00DD485B /* KVOController */ = {
-			isa = PBXGroup;
-			children = (
-				5AFF96DA1CD1254A00DD485B /* FBKVOController */,
-			);
-			path = KVOController;
-			sourceTree = "<group>";
-		};
-		5AFF96DA1CD1254A00DD485B /* FBKVOController */ = {
-			isa = PBXGroup;
-			children = (
-				5AFF96DB1CD1254A00DD485B /* FBKVOController.h */,
-				5AFF96DC1CD1254A00DD485B /* FBKVOController.m */,
-			);
-			path = FBKVOController;
 			sourceTree = "<group>";
 		};
 		5AFF96DF1CD1254A00DD485B /* SwiftyJSON */ = {
@@ -388,11 +367,10 @@
 				5AFF97641CD133C700DD485B /* NetworkConfig.swift in Sources */,
 				A7D952591CD151EE00AD1D1D /* SDWebImageDownloader.m in Sources */,
 				A7D9525E1CD151EE00AD1D1D /* UIImage+GIF.m in Sources */,
-				5AFF96CE1CD1246E00DD485B /* LoadPhotoStreamOperation.swift in Sources */,
+				5AFF96CE1CD1246E00DD485B /* GetRecentPhotos.swift in Sources */,
 				A7D952541CD151EE00AD1D1D /* MKAnnotationView+WebCache.m in Sources */,
 				5AFF96441CD11CB200DD485B /* PhotoStreamCell.swift in Sources */,
 				A7D9525F1CD151EE00AD1D1D /* UIImage+MultiFormat.m in Sources */,
-				5AFF97161CD1254A00DD485B /* FBKVOController.m in Sources */,
 				A7D952571CD151EE00AD1D1D /* SDWebImageCompat.m in Sources */,
 				5A088B7A1D092D8500BF5FE6 /* Protocols.swift in Sources */,
 				5AFF972B1CD1254A00DD485B /* SwiftyJSON.swift in Sources */,

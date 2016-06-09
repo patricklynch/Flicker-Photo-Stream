@@ -17,24 +17,6 @@ class PhotoStreamViewController: UIViewController, UICollectionViewDelegateFlowL
     }
     
     @IBOutlet private weak var collectionView: UICollectionView!
-    
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh(_: )), forControlEvents: .ValueChanged)
-        self.collectionView.addSubview( refreshControl )
-        return refreshControl
-    }()
-    
-    private(set) var topInset: CGFloat = 0.0
-    
-    private func positionRefreshControl() {
-        if let subview = refreshControl.subviews.first {
-            subview.center = CGPoint(
-                x: self.refreshControl.bounds.midX,
-                y: self.refreshControl.bounds.midY + self.topInset * 0.5
-            )
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +30,7 @@ class PhotoStreamViewController: UIViewController, UICollectionViewDelegateFlowL
     }
     
     @objc private func refresh(sender: AnyObject? = nil) {
-        self.refreshControl.beginRefreshing()
+        refreshControl.beginRefreshing()
         dataSource.reload() { [weak self] in
             self?.refreshControl.endRefreshing()
             self?.collectionView.reloadData()
@@ -60,5 +42,24 @@ class PhotoStreamViewController: UIViewController, UICollectionViewDelegateFlowL
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return dataSource.collectionView(collectionView, sizeForItemAtIndexPath: indexPath)
     }
+    
+    // MARK: - Hacky refresh control stuff
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_: )), forControlEvents: .ValueChanged)
+        self.collectionView.addSubview( refreshControl )
+        return refreshControl
+    }()
+    
+    private(set) var topInset: CGFloat = 0.0
+    
+    private func positionRefreshControl() {
+        if let subview = refreshControl.subviews.first {
+            subview.center = CGPoint(
+                x: refreshControl.bounds.midX,
+                y: refreshControl.bounds.midY + self.topInset * 0.5
+            )
+        }
+    }
 }
-

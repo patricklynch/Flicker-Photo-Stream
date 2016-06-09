@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol SelfSizingCell: class {
-    func cellSize(withinBounds bounds: CGRect) -> CGSize
-}
-
 protocol ExtendedCollectionViewDataSource: UICollectionViewDataSource {
     func reload(completion:()->())
     func registerCells(collectionView: UICollectionView)
     func collectionView(collectionView: UICollectionView, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+}
+
+protocol SelfSizingCell: class {
+    func cellSize(withinBounds bounds: CGRect) -> CGSize
 }
